@@ -46,7 +46,7 @@ Sebuah aplikasi web berbasis Geographic Information System (GIS) yang menampilka
 
    ```bash
    # Clone repository
-   git clone https://github.com/username/repo-name.git
+   git clone https://github.com/NDP4/Web-GIS-Pesebaran.git
    cd repo-name
 
    # Import database
