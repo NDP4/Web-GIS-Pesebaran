@@ -1,0 +1,51 @@
+version: "3.8"
+
+services:
+  web:
+    image: nginx:alpine
+    restart: always
+    ports:
+      - "6010:80"
+    volumes:
+      - .:/var/www/html
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - php
+
+  php:
+    build: 
+      context: .
+      dockerfile: Dockerfile-php
+    restart: always
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db
+
+  db:
+    image: mariadb:10.6
+    restart: always
+    platform: linux/arm64/v8
+    ports:
+      - "6306:3306"
+    environment:
+      MYSQL_DATABASE: uas_gis
+      MYSQL_ROOT_PASSWORD: p4rv1zk44n
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database:/docker-entrypoint-initdb.d
+
+  phpmyadmin:
+    image: arm64v8/phpmyadmin:latest
+    restart: always
+    platform: linux/arm64/v8
+    ports:
+      - "4010:80"
+    environment:
+      - PMA_HOST=db
+      - MYSQL_ROOT_PASSWORD=p4rv1zk44n
+    depends_on:
+      - db
+
+volumes:
+  mysql_data:
