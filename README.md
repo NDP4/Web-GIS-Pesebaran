@@ -1,6 +1,6 @@
 # Web GIS Persebaran Peternakan Bantul
 
-![Preview](images/capture.png)
+![Preview](images/MOCKUP.png)
 
 Sebuah aplikasi web berbasis Geographic Information System (GIS) yang menampilkan data persebaran peternakan di Kabupaten Bantul, Yogyakarta. Aplikasi ini menyajikan informasi lokasi peternakan beserta data pendukung seperti jumlah buruh peternakan per kapanewon.
 
